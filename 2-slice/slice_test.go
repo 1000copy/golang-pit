@@ -3,13 +3,33 @@ package slice_test
 import (
 "testing" 
 // "fmt"
+"strconv"
 )
 
 func Test_cap(t*testing.T){
 	data := make([]int, 10, 20)
     data[0] = 1
     data[1] = 2
-    t.Log("length:", len(data), "cap:", cap(data), ":", data)
+    if len(data) != 10{
+    	t.Error("len error")
+    }
+    if cap(data) != 20{
+    	t.Error("cap error")
+    }
+    // t.Log("length:", len(data), "cap:", cap(data), ":", data)
+    // t.Logf("length:%d cap:%d data:%s",len(data),cap(data),to_str(data[:]))
+}
+func to_str(a []int) string{
+	r:=""
+	for i := range a {
+		// r = r+ string(a[i])
+		if i == 0 {
+			r += strconv.Itoa(a[i])
+		}else{
+			r += ","+strconv.Itoa(a[i])
+		}
+	}
+	return "["+r+"]"
 }
 func Test_slice(t *testing.T){
 	slice :=[]byte{1,2,3,4,5,6}
