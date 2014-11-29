@@ -5,7 +5,27 @@ import (
 // "fmt"
 "strconv"
 )
-
+func Test_valuecopy(t *testing.T){
+	var a [10]int = [10]int{1, 2, 3}
+    b := a
+    b[0] = 2
+    if (a[0] == b[0]){
+    	t.Error("value copy error")
+    }
+}
+func Test_slicecreate(t *testing.T){
+	var a [10]int = [10]int{1, 2, 3,4,5}
+	// create method 1
+    b := a[0:3]
+    // create method 2
+    c:= make([]int, 10, 20)  	
+    if len(b) != 3 {
+    	t.Error("length error")
+    }
+    if cap(c) != 20 || len(c) !=10 {
+    	t.Error("length or len error")
+    }
+}
 func Test_cap(t*testing.T){
 	data := make([]int, 10, 20)
     data[0] = 1
