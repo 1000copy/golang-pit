@@ -11,4 +11,3 @@ func Test_pass(t *testing.T){
 	t.Log("pass")
 	// t.Error("就是这么有钱，就是这么任性！")
 }
-/
