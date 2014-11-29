@@ -67,8 +67,9 @@ func Test_slice(t *testing.T){
 		t.Error("append failure")
 	}
 }
-// more ref : http://www.cnblogs.com/yjf512/archive/2012/06/14/2549929.html
-
+// more ref : 
+// http://www.cnblogs.com/yjf512/archive/2012/06/14/2549929.html
+// http://studygolang.com/topics/74
 func testEq(a, b []byte) bool {
     if len(a) != len(b) {
         return false
