@@ -5,7 +5,7 @@ golang features code and doc
 
 21-centery clang ,big 8 suprises ... 
 
-我被蛊惑，我要开坑。以后如何，不管了。/////\\\\\\\\\
+我被蛊惑，我要开坑。以后如何，不管了。/////\\\\\\\\\////
 
 
 configuration enviroments
