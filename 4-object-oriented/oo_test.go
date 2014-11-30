@@ -1,6 +1,10 @@
 package pit
 import (
 "testing"
+"strings"
+// "reflect"
+"strconv"
+"fmt"
 )
 
 type Rect struct {
@@ -105,8 +109,86 @@ func Test_inherited (t *testing.T){
 //  simple type extension method
 
 type Vchcode string
-//  object slices
+func (v Vchcode)check()bool{
+	slices := strings.Split(string(v), ",")
+	for i := range(slices){
+		_ ,err:= strconv.Atoi(slices[i])
+		if err !=nil {
+			return false
+		}
+	}
+	return true
+}
+func Test_vchcode (t *testing.T){
+	vchcode := "1,2,3"
+	if "1,2,3" != vchcode{
+		t.Error()
+	}
+	vchcode = "(1,2,3)"
+	if "(1,2,3)" != vchcode{
+		t.Error()
+	}
+	var vchcode1 Vchcode
+	vchcode1 = "1,2,3"
+	if !vchcode1.check(){
+		t.Error()
+	}
+	vchcode1 = "(1,2,3"
+	if vchcode1.check(){
+		t.Error()
+	}
+}
 
+//  object slices
+type RectList []Rect
+func (list RectList)AreaBigThan(x float64)RectList{
+	rlist := RectList{}
+	for _,r := range list{
+		if r.area() > x {
+			rlist = append(rlist,r)
+		}
+	}
+	return rlist
+}
+
+func Test_bigger_area(t*testing.T){
+	list := RectList{
+		Rect{1,1},
+		Rect{1,2},
+		Rect{1,3},
+	}
+	if 2!=len(list.AreaBigThan(1)){
+		t.Error()
+	}
+}
+// how to map /reduce /filter to slices
+// Does the standard library (or a popular agreed-upon library) let me map, filter, fold etc. over slices/maps?
+
+// No. Go's type system doesn't cater for the usual form of these primitives because it lacks generics.
+// See also this thread on golang-nuts.
+// type FilterFunc func(r Rect,x float64)bool
+// func (list RectList)filter(f FilterFunc)RectList{
+// 	rlist := RectList{}
+// 	for _,r := range list{
+// 		if f(r,x) {
+// 			rlist = append(rlist,r)
+// 		}
+// 	}
+// 	return rlist
+// }
+// func Test_bigger_filter(t*testing.T){
+// 	list := RectList{
+// 		Rect{1,1},
+// 		Rect{1,2},
+// 		Rect{1,3},
+// 	}
+// 	list.filter(func(r Rect,x float64){
+// 			return r.width > x
+// 		})
+// 	if 2!=len(list.AreaBigThan(1)){
+// 		t.Error()
+// 	}
+// }
 
 
 
