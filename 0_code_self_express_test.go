@@ -20,7 +20,7 @@ func Test_self_express(t *testing.T){
 		t.Error("add expected error")
 	}
 }
-// 验证结果，打印方式。需要消费眼睛的注意力，运行时去了解代码是否正确，并且需要文字说明期望
+// 验证结果，打印方式。并且需要文字说明期望.消费眼睛的注意力,我觉得不够好
 func Test_eye_consume_express(t *testing.T){
 	var a int;
 	a  = 1

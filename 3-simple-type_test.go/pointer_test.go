@@ -1,14 +1,11 @@
 package pit
 
-// 何为代码的自解释？
-
 import (
 "testing"
 )
 
-func inc(a *int)int{
+func inc(a *int){
   (*a)++;
-  return *a
 }
 func Test_value_to_pointer(t *testing.T){
 	var a int;
