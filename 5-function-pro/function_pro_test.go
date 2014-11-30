@@ -56,13 +56,22 @@ func filter_func(array []int, fun func(int)bool)[]int{
     }
     return rlist
 }
+// filter + foo,语意是整体的，一次写在一起。
+// 这是delphi等支持函数变量，却不支持匿名函数的语言的差别。
+// delphi是无法把apply +foo书写在一起的
 func Test_m2(t*testing.T){
     v := []int{1, 2 ,3 ,4 , 5}
     fmt.Println(v)
     r := filter_func(v, func(s int)bool{return s > 1})
     fmt.Println(r)
 }
-
-
+// lambda express : referece local var
+func Test_m3(t*testing.T){
+    v := []int{1, 2 ,3 ,4 , 5}
+    fmt.Println(v)
+    from :=  4;
+    r := filter_func(v, func(s int)bool{return s > from})
+    fmt.Println(r)
+}
 
 
