@@ -118,6 +118,7 @@ func Test_m5(t*testing.T){
     fmt.Println(vv)
 }
 // 除了[]int ,还可以[]string . 有点泛型的味道。
+
 func Test_m6(t*testing.T){
     v := []string{"1", "2" ,"3","9"}
     vv := make([]T,4)
@@ -130,7 +131,38 @@ func Test_m6(t*testing.T){
     	func(s T)T{return s.(string) +s.(string) })
     fmt.Println(vv)
 }
+// func t_array(v []T)[]T{
+// 	r := make([]T,len(v))
+//     for i := range v{
+//     	r[i] = v[i]
+//     }
+//     return r
+// }
+func Test_m7(t*testing.T){
+    v := []string{"1", "2" ,"3","1"}
+    // vv := make([]T,len(v))
+    vv := []T{}
+    for _,vvv:=range v {
+	    vv = append(vv,vvv)
+	}
+    fmt.Println(v)
+    map_a(vv, 
+    	// func(s interface{})interface{}{return int(s) *int(s) })
+    	func(s T)T{return s.(string) +s.(string) })
+    fmt.Println(vv)
+}
 
+// func Test_m8(t*testing.T){
+//     v := []string{"1", "2" ,"3","1"}
+//     // vv := make([]T,len(v))
+//     vv := []T{}
+// 	vv = append(vv,v...)
+//     fmt.Println(v)
+//     map_a(vv, 
+//     	// func(s interface{})interface{}{return int(s) *int(s) })
+//     	func(s T)T{return s.(string) +s.(string) })
+//     fmt.Println(vv)
+// }
 
 
 
