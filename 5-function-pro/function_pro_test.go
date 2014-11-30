@@ -73,6 +73,64 @@ func Test_m3(t*testing.T){
     r := filter_func(v, func(s int)bool{return s > from})
     fmt.Println(r)
 }
-//  但是。。因为go不支持泛型，因此，对map/reduce的表现是不完整的。
+//  有人说：但是。。因为go不支持泛型，因此，对map/reduce的表现是不完整的。
+//  那么，interface{},这样的万用类型，是否可以解决此问题？
+//  结果：虽然有点丑，但是确实如果设想的那样，可以做。
+// map interface{}
+
+func map_(array []interface{}, fun func(interface{})interface{}){
+    for index, element := range array{
+        array[index] = fun(element)
+    }
+}
+func Test_m4(t*testing.T){
+    v := []int{1, 2 ,3,6}
+    vv := make([]interface{},4)
+    for i := range v{
+    	vv[i] = v[i]
+    }
+    fmt.Println(v)
+    map_(vv, 
+    	// func(s interface{})interface{}{return int(s) *int(s) })
+    	func(s interface{})interface{}{return s.(int) *s.(int) })
+    fmt.Println(vv)
+}
+
+// atom simplize 
+
+type T interface{}
+
+func map_a(array []T, fun func(T)T){
+    for index, element := range array{
+        array[index] = fun(element)
+    }
+}
+func Test_m5(t*testing.T){
+    v := []int{1, 2 ,3,9}
+    vv := make([]T,4)
+    for i := range v{
+    	vv[i] = v[i]
+    }
+    fmt.Println(v)
+    map_a(vv, 
+    	// func(s interface{})interface{}{return int(s) *int(s) })
+    	func(s T)T{return s.(int) *s.(int) })
+    fmt.Println(vv)
+}
+// 除了[]int ,还可以[]string . 有点泛型的味道。
+func Test_m6(t*testing.T){
+    v := []string{"1", "2" ,"3","9"}
+    vv := make([]T,4)
+    for i := range v{
+    	vv[i] = v[i]
+    }
+    fmt.Println(v)
+    map_a(vv, 
+    	// func(s interface{})interface{}{return int(s) *int(s) })
+    	func(s T)T{return s.(string) +s.(string) })
+    fmt.Println(vv)
+}
+
+
 
 
