@@ -1,4 +1,4 @@
-package self_expression
+package pit
 
 // 何为代码的自解释？
 
@@ -7,7 +7,7 @@ import (
 "testing"
 )
 
-func inc(a *int)int{
+func add(a *int)int{
   (*a)++;
   return *a
 }
@@ -15,16 +15,16 @@ func inc(a *int)int{
 func Test_self_express(t *testing.T){
 	var a int;
 	a  = 1
-	inc(&a)
+	add(&a)
 	if a != 2 {
-		t.Error("inc expected error")
+		t.Error("add expected error")
 	}
 }
 // 验证结果，打印方式。需要消费眼睛的注意力，运行时去了解代码是否正确，并且需要文字说明期望
 func Test_eye_consume_express(t *testing.T){
 	var a int;
 	a  = 1
-	inc(&a)
+	add(&a)
 	fmt.Println(a)
 }
 
