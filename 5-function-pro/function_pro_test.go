@@ -73,5 +73,6 @@ func Test_m3(t*testing.T){
     r := filter_func(v, func(s int)bool{return s > from})
     fmt.Println(r)
 }
+//  但是。。因为go不支持泛型，因此，对map/reduce的表现是不完整的。
 
 
