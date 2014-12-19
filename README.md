@@ -30,6 +30,7 @@ Crawle to github.com and new repository 1000copy/golang-pit . Then back to my ma
 	$ echo $GOPATH
 	/Users/chuanjun/golang
 	$ go get github.com/1000copy/golang-pit
+
 Golang tests in sub-directory
 ----------
 simple answer is :
@@ -43,6 +44,18 @@ In order to run all tests of your go app including sub packages just perform the
 
 go test ./…
 
-	
+Shawshank:golang-pit rita$ go test ./...  
+ok  	golang-pit	0.006s
+ok  	golang-pit/1-unittest	0.009s
+ok  	golang-pit/2-slice	0.016s
+ok  	golang-pit/3-simple-type_test	0.025s
+ok  	golang-pit/4-object-oriented	0.008s
+ok  	golang-pit/5-function-pro	0.011s
+ok  	golang-pit/6-interface-ducktype	0.005s
+ok  	golang-pit/7-gorouting	0.021s
+ok  	golang-pit/8-exception	0.005s
+
+
+
 http://stackoverflow.com/questions/19200235/golang-tests-in-sub-directory
 
