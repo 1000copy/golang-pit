@@ -30,5 +30,19 @@ Crawle to github.com and new repository 1000copy/golang-pit . Then back to my ma
 	$ echo $GOPATH
 	/Users/chuanjun/golang
 	$ go get github.com/1000copy/golang-pit
+Golang tests in sub-directory
+----------
+simple answer is :
+	go test ./...
 
+	3个点！
+	如果是go  test  package_name ,就只会执行当前包的第一层目录
+
+Golang - Run all go tests recursively including subpackages
+In order to run all tests of your go app including sub packages just perform the following command:
+
+go test ./…
+
+	
+http://stackoverflow.com/questions/19200235/golang-tests-in-sub-directory
 

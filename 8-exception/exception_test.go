@@ -1,4 +1,4 @@
-package main
+package pit
 
 import (
   "testing"
@@ -11,21 +11,20 @@ func callstack_level_1 (){
             fmt.Println("Recovered in f", r)
         }
     }()
-   callstack_level_2 ();
+   callstack_level_2 ()
 }
 func callstack_level_2 (){
 	callstack_level_3()
 }
 func callstack_level_3 (){
-	panic("low level error") ;
+	panic("low level error") 
 }
 // try finally 在level_0 内不管发生了什么，finally section 都会执行
 func callstack_level_0 (){
 	panic("panic directly") ;
-
 }
 // try finally
-func Test_pass(t *testing.T){
+func Test_tryfinally(t *testing.T){
 	// finally section
 	defer func() {
         if r := recover(); r != nil {
@@ -36,7 +35,7 @@ func Test_pass(t *testing.T){
     callstack_level_0()
 }
 // try catch
-func Test_pass(t *testing.T){
+func Test_trycatch(t *testing.T){
     callstack_level_1()
 }
 //今天测试了下，发现尽管golang作者和社区一再啰嗦，其实 panic recover

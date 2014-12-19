@@ -1,4 +1,4 @@
-package golang
+package pit
 
 import (
 //  invalid import path: "testing "
