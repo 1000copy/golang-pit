@@ -5,7 +5,7 @@ golang-pit
 
 so I am poisoned ,I am digging pits . 
 
-Configuration enviroments for package users
+For package users
 -------------
 
  type command in terminal:
@@ -19,7 +19,7 @@ Configuration enviroments for package users
 	$ go get github.com/1000copy/golang-pit
 	$ cd HOME 
 	$ go test ./...
-Configuration enviroments for package developers
+For package developers
 -------------
 	$mkdir golang
 	$mkdir golang/src
